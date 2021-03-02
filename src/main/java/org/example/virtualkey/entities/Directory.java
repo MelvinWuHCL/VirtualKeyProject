@@ -17,7 +17,7 @@ public class Directory {
     
     File Dfiles = path.toFile();
     
-    File[] directoryFiles = Dfiles.listFiles();
+    //File[] directoryFiles = Dfiles.listFiles();
     
     public String getName() {
         return name;
@@ -28,7 +28,10 @@ public class Directory {
     	files.forEach(f -> System.out.println(f));
     }
 
-    public ArrayList<File> fillFiles(){
+    public ArrayList<File> fillFiles() {
+    	
+        
+        File[] directoryFiles = Dfiles.listFiles();
     	files.clear();
     	for (int i = 0; i < directoryFiles.length; i++) {
     		if (directoryFiles[i].isFile()) {
@@ -38,8 +41,10 @@ public class Directory {
     	return files;
     }
 
-    public ArrayList<File> getFiles(){
-    	return this.files;
+    public ArrayList<File> getFiles() {
+    	
+    	fillFiles();
+    	return files;
     }
 
 }

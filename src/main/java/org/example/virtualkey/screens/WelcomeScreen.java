@@ -22,13 +22,24 @@ public class WelcomeScreen implements Screen {
         options.add("3. Quit");
 
     }
+    
+    public void introWS() {
+    	System.out.println(welcomeText);
+        System.out.println(developerText);
+        
+        Show();
+    }
+    
     @Override
     public void Show()
     {
+    	/*
         System.out.println(welcomeText);
         System.out.println(developerText);
         System.out.println("\n");
-        
+        */
+    	
+    	System.out.println("\n");
         for (String s : options)  {
             System.out.println(s);
         }
@@ -48,11 +59,17 @@ public class WelcomeScreen implements Screen {
 
             case 1: // Show Files
                 this.ShowFiles();
+                
+                this.Show();
+                
                 break;
+                
             case 2: // Show Submenu
             	ScreenService.setCurrentScreen(ScreenService.FileOptionsScreen);
                 ScreenService.getCurrentScreen().Show();
                 ScreenService.getCurrentScreen().GetUserInput();
+                
+                this.Show();
                 
                 break;
                 /*FileOptionsScreen screen = new FileOptionsScreen();
@@ -60,6 +77,8 @@ public class WelcomeScreen implements Screen {
                 screen.GetUserInput();
                 break;
                 */
+            case 3: //System.exit strat
+            	System.exit(0);
             default:
                 System.out.println("Invalid Option");
                 break;

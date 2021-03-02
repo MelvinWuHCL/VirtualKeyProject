@@ -16,6 +16,8 @@ import org.example.virtualkey.services.ScreenService;
 public class FileOptionsScreen implements Screen {
 	
 	private Directory dir = new Directory();
+	
+	private ScreenService ss = new ScreenService();
 
     private ArrayList<String> options = new ArrayList<>();
 
@@ -24,18 +26,24 @@ public class FileOptionsScreen implements Screen {
 
     public FileOptionsScreen(Directory dir) {
     	
-    	this.dir = dir;
+    	//this.dir = dir;
     	
         options.add("1. Add a File");
         options.add("2. Delete A File");
         options.add("3. Search A File");
         options.add("4. Return to Menu");
+        //options.add("5. Quit");
+    }
+    
+    public void introFOS() {
+    	System.out.println("File Options Menu");
+    	Show();
     }
 
     @Override
     public void Show()
     {
-        System.out.println("\nChanged menu");
+        //System.out.println("\nChanged menu");
 
         for (String s : options)  {
             System.out.println(s);
@@ -57,18 +65,29 @@ public class FileOptionsScreen implements Screen {
         switch(option) {
 
             case 1: // Add File
-                this.AddFile();
+                AddFile();
+                
+                Show();
                 break;
             case 2: // Delete File
-                this.DeleteFile();
+                DeleteFile();
+                
+                Show();
                 break;
             case 3: // Search File
-                this.SearchFile();
+                SearchFile();
+                Show();
                 break;
+            /*
+            case 4: // Return to Menu
+            	
+            	ss.setCurrentScreen(WelcomeScreen);
+            	
             default:
                 System.out.println("Invalid Option");
                 break;
-
+                
+                */
         }
 
     }
@@ -89,6 +108,7 @@ public class FileOptionsScreen implements Screen {
 		      if (file.createNewFile()) {
 		    	  System.out.println("File created: " + file.getName());
 		    	  dir.getFiles().add(file);
+		    	  
 		      } else {
 		        System.out.println("This File Already Exits, no need to add another");
 		      }
@@ -130,9 +150,13 @@ public class FileOptionsScreen implements Screen {
 
         System.out.println("You are searching for a file named: " + fileName);
         
+        //TODO Fix it so ArrayList obtains files
+        
         ArrayList<File> files = dir.getFiles();
         
-        for(int i = 0; i <files.size(); i++) {
+        System.out.println(files);
+        
+        for(int i = 0; i < files.size(); i++) {
 			if(files.get(i).getName().equals(fileName)) {
 				System.out.println("Found " + fileName);
 				found = true;

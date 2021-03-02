@@ -12,7 +12,7 @@ public class VirtualKeyApplication {
     public static void main(String[] args) {
     	
     	WelcomeScreen welcome = new WelcomeScreen();
-    	welcome.Show();
+    	welcome.introWS();
     	welcome.GetUserInput();
         DirectoryService.PrintFiles();
         //WelcomeScreen screen = new WelcomeScreen();
