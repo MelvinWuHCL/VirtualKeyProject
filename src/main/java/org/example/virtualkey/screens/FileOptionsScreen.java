@@ -17,12 +17,7 @@ public class FileOptionsScreen implements Screen {
 	
 	private Directory dir = new Directory();
 	
-	//private ScreenService ss = new ScreenService();
-
-    private ArrayList<String> options = new ArrayList<>();
-
-
-    // Scanner in = new Scanner(System.in);
+	private ArrayList<String> options = new ArrayList<>();
 
     public FileOptionsScreen(Directory dir) {
     	
@@ -150,8 +145,6 @@ public class FileOptionsScreen implements Screen {
         //Finished TODO
         
         ArrayList<File> files = dir.getFiles();
-        
-        System.out.println(files);
         
         for(int i = 0; i < files.size(); i++) {
 			if(files.get(i).getName().equals(fileName)) {

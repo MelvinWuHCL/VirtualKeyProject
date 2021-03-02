@@ -16,9 +16,7 @@ public class Directory {
     Path path = FileSystems.getDefault().getPath(name).toAbsolutePath();
     
     File Dfiles = path.toFile();
-    
-    //File[] directoryFiles = Dfiles.listFiles();
-    
+       
     public String getName() {
         return name;
     }
