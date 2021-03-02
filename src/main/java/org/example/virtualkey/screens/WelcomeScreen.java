@@ -30,24 +30,19 @@ public class WelcomeScreen implements Screen {
         Show();
     }
     
+    
+    
     @Override
-    public void Show()
-    {
-    	/*
-        System.out.println(welcomeText);
-        System.out.println(developerText);
-        System.out.println("\n");
-        */
-    	
-    	System.out.println("\n");
+    public void Show() {
+    	System.out.println("Main Menu");
         for (String s : options)  {
             System.out.println(s);
         }
 
     }
 
-    public void GetUserInput(){
-        int selectedOption;
+    public void GetUserInput() {
+        int selectedOption  = 0;
         while ((selectedOption = this.getOption()) != 3) {
             this.NavigateOption(selectedOption);
         }
@@ -57,14 +52,14 @@ public class WelcomeScreen implements Screen {
     public void NavigateOption(int option) {
         switch(option) {
 
-            case 1: // Show Files
+            case 1: // Show Files in Directory
                 this.ShowFiles();
                 
                 this.Show();
                 
                 break;
                 
-            case 2: // Show Submenu
+            case 2: // Show File Options menu
             	ScreenService.setCurrentScreen(ScreenService.FileOptionsScreen);
                 ScreenService.getCurrentScreen().Show();
                 ScreenService.getCurrentScreen().GetUserInput();
@@ -72,24 +67,19 @@ public class WelcomeScreen implements Screen {
                 this.Show();
                 
                 break;
-                /*FileOptionsScreen screen = new FileOptionsScreen();
-                screen.Show();
-                screen.GetUserInput();
-                break;
-                */
-            case 3: //System.exit strat
-            	System.exit(0);
+                
             default:
                 System.out.println("Invalid Option");
                 break;
-
         }
-
+        
     }
 
     public void ShowFiles() {
 
         //TODO: Get the files from the Directory
+    	
+    	//Finished TODO Task
 
         System.out.println("List of Files: ");
     	DirectoryService.PrintFiles();

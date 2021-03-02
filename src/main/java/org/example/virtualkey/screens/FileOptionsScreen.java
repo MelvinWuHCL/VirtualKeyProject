@@ -17,7 +17,7 @@ public class FileOptionsScreen implements Screen {
 	
 	private Directory dir = new Directory();
 	
-	private ScreenService ss = new ScreenService();
+	//private ScreenService ss = new ScreenService();
 
     private ArrayList<String> options = new ArrayList<>();
 
@@ -26,73 +26,68 @@ public class FileOptionsScreen implements Screen {
 
     public FileOptionsScreen(Directory dir) {
     	
-    	//this.dir = dir;
-    	
-        options.add("1. Add a File");
+    	options.add("1. Add a File");
         options.add("2. Delete A File");
         options.add("3. Search A File");
         options.add("4. Return to Menu");
-        //options.add("5. Quit");
+        
     }
     
-    public void introFOS() {
-    	System.out.println("File Options Menu");
-    	Show();
-    }
-
     @Override
-    public void Show()
-    {
-        //System.out.println("\nChanged menu");
-
-        for (String s : options)  {
+    public void Show() {
+    	System.out.println("File Options Menu");
+        for (String s : options) {
             System.out.println(s);
         }
 
     }
 
-    public void GetUserInput()
-    {
+    public void GetUserInput() {
         int selectedOption;
-        while ((selectedOption = this.getOption()) != 4) {
+        while ((selectedOption = this.getOption()) != 5) {
             this.NavigateOption(selectedOption);
         }
     }
 
     @Override
-    public void NavigateOption(int option)
-    {
-        switch(option) {
+    public void NavigateOption(int option) {
+        
+    	switch(option) {
 
             case 1: // Add File
-                AddFile();
+                this.AddFile();
                 
-                Show();
+                this.Show();
                 break;
             case 2: // Delete File
-                DeleteFile();
+                this.DeleteFile();
                 
-                Show();
+                this.Show();
                 break;
             case 3: // Search File
-                SearchFile();
-                Show();
+                this.SearchFile();
+                this.Show();
                 break;
-            /*
+            
             case 4: // Return to Menu
             	
-            	ss.setCurrentScreen(WelcomeScreen);
-            	
+            	ScreenService.setCurrentScreen(ScreenService.WelcomeScreen);
+                ScreenService.getCurrentScreen().Show();
+                ScreenService.getCurrentScreen().GetUserInput();
+                
+                break;
             default:
                 System.out.println("Invalid Option");
                 break;
                 
-                */
+                
         }
 
     }
     
     //TODO: Add functionality to all 
+    
+    // Finished TODO
 
     public void AddFile() {
         System.out.println("Please Enter the Filename:");
@@ -120,7 +115,6 @@ public class FileOptionsScreen implements Screen {
     
     
     public void DeleteFile() {
-    	//dir.getFiles();
     	
     	System.out.println("Please Enter the Filename:");
 
@@ -129,7 +123,9 @@ public class FileOptionsScreen implements Screen {
         System.out.println("You are deleting a file named: " + fileName);
         
         
-	     //TODO: Delete file
+	    //TODO: Delete file
+        // Finished TODO
+        
 		Path path = FileSystems.getDefault().getPath(Directory.name + fileName).toAbsolutePath();
 		File file = path.toFile();
 	      if (file.delete()) {
@@ -151,6 +147,7 @@ public class FileOptionsScreen implements Screen {
         System.out.println("You are searching for a file named: " + fileName);
         
         //TODO Fix it so ArrayList obtains files
+        //Finished TODO
         
         ArrayList<File> files = dir.getFiles();
         
@@ -167,14 +164,14 @@ public class FileOptionsScreen implements Screen {
         }
     }
     
-    private String getInputString(){
+    private String getInputString() {
 
         Scanner in = new Scanner(System.in);
         return(in.nextLine());
 
     }
     
-    private int getOption(){
+    private int getOption() {
         Scanner in = new Scanner(System.in);
 
         int returnOption = 0;

@@ -30,8 +30,10 @@ public class Directory {
 
     public ArrayList<File> fillFiles() {
     	
-        
         File[] directoryFiles = Dfiles.listFiles();
+        
+        
+        
     	files.clear();
     	for (int i = 0; i < directoryFiles.length; i++) {
     		if (directoryFiles[i].isFile()) {
