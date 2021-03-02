@@ -22,9 +22,9 @@ public class FileOptionsScreen implements Screen {
 
     // Scanner in = new Scanner(System.in);
 
-    public FileOptionsScreen() {
+    public FileOptionsScreen(Directory dir) {
     	
-    	//this.dir = dir;
+    	this.dir = dir;
     	
         options.add("1. Add a File");
         options.add("2. Delete A File");
@@ -84,7 +84,7 @@ public class FileOptionsScreen implements Screen {
         
 		try {
 			Path path = FileSystems.getDefault().getPath(Directory.name + fileName).toAbsolutePath();
-			File file = path.toFile();
+			File file = new File(dir.getName() + fileName);
 			
 		      if (file.createNewFile()) {
 		    	  System.out.println("File created: " + file.getName());
@@ -100,7 +100,7 @@ public class FileOptionsScreen implements Screen {
     
     
     public void DeleteFile() {
-    	dir.getFiles();
+    	//dir.getFiles();
     	
     	System.out.println("Please Enter the Filename:");
 
@@ -110,7 +110,7 @@ public class FileOptionsScreen implements Screen {
         
         
 	     //TODO: Delete file
-		Path path = FileSystems.getDefault().getPath("src/main/resources/"+fileName).toAbsolutePath();
+		Path path = FileSystems.getDefault().getPath(Directory.name + fileName).toAbsolutePath();
 		File file = path.toFile();
 	      if (file.delete()) {
 	    	  System.out.println("Deleted File: " + file.getName());
