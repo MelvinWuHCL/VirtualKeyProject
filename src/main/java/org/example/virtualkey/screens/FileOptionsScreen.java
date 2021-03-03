@@ -19,7 +19,7 @@ public class FileOptionsScreen implements Screen {
 	
 	private ArrayList<String> options = new ArrayList<>();
 
-    public FileOptionsScreen(Directory dir) {
+    public FileOptionsScreen() {
     	
     	options.add("1. Add a File");
         options.add("2. Delete A File");
@@ -39,7 +39,7 @@ public class FileOptionsScreen implements Screen {
 
     public void GetUserInput() {
         int selectedOption;
-        while ((selectedOption = this.getOption()) != 5) {
+        while ((selectedOption = this.getOption()) != 4) {
             this.NavigateOption(selectedOption);
         }
     }
@@ -64,6 +64,7 @@ public class FileOptionsScreen implements Screen {
                 this.Show();
                 break;
             
+                /*
             case 4: // Return to Menu
             	
             	ScreenService.setCurrentScreen(ScreenService.WelcomeScreen);
@@ -71,6 +72,7 @@ public class FileOptionsScreen implements Screen {
                 ScreenService.getCurrentScreen().GetUserInput();
                 
                 break;
+                */
             default:
                 System.out.println("Invalid Option");
                 break;
@@ -127,7 +129,7 @@ public class FileOptionsScreen implements Screen {
 	    	  System.out.println("Deleted File: " + file.getName());
 	    	  dir.getFiles().remove(file);
 	      } else {
-	        System.out.println("Failed to delete file:" + fileName);
+	        System.out.println("Failed to delete file:" + fileName + ", file was not found.");
 	      }
     }
     
@@ -145,6 +147,7 @@ public class FileOptionsScreen implements Screen {
         //Finished TODO
         
         ArrayList<File> files = dir.getFiles();
+        
         
         for(int i = 0; i < files.size(); i++) {
 			if(files.get(i).getName().equals(fileName)) {

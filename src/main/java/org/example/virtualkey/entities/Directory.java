@@ -1,6 +1,7 @@
 package org.example.virtualkey.entities;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.io.File;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
@@ -38,6 +39,9 @@ public class Directory {
     			files.add(directoryFiles[i]);
     		}
     	}
+    	
+    	Collections.sort(files);
+    	
     	return files;
     }
 
@@ -46,5 +50,10 @@ public class Directory {
     	fillFiles();
     	return files;
     }
-
+    
+    
+    public void mergeSort() {
+    	
+    }
+    
 }

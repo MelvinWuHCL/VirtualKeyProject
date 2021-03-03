@@ -26,7 +26,7 @@ public class WelcomeScreen implements Screen {
     public void introWS() {
     	System.out.println(welcomeText);
         System.out.println(developerText);
-        
+        System.out.println("\n");
         Show();
     }
     
